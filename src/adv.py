@@ -40,7 +40,7 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-character = Player(room['outside'])
+character = Player(room["outside"])
 no_path = 'You can\'t go that way!!'
 
 
@@ -63,22 +63,25 @@ while True:
     print("\n")
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
-    if character_input == 'n' or 'N':
+    if character_input.lower() == "n":
         if character_location.n_to is not None:
             character.location = character.location.n_to
         else:
             print(no_path)
-    elif character_input == 's' or 'S':
-        if character_location.n_to is not None:
+
+    elif character_input.lower() == "s":
+        if character_location.s_to is not None:
             character.location = character.location.s_to
         else:
             print(no_path)
-    elif character_input == 'e' or 'E':
+
+    elif character_input.lower() == "e":
         if character_location.e_to is not None:
             character.location = character.location.e_to
         else:
             print(no_path)
-    elif character_input == 'w' or 'W':
+
+    elif character_input.lower == "w":
         if character_location.w_to is not None:
             character.location = character.location.w_to
         else:
@@ -86,7 +89,7 @@ while True:
 
 
 # If the user enters "q", quit the game.
-    elif character_input == 'q' or 'Q':
+    elif character_input.lower() == "q":
         print('Thank you for playing. Come again soon! \n \n')
         exit()
 

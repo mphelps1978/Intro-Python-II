@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+
 
 # Declare all the rooms
 
@@ -38,14 +40,57 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+character = Player(room['outside'])
+no_path = 'You can\'t go that way!!'
+
 
 # Write a loop that:
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
+
+while True:
+    character_location = character.location
+    print("\n")
+    print("####################################################")
+    print(f"{character.location.name}")
+    print(f"{character.location.description}")
+    print("\n")
+    character_input = input(
+        "Chose a direction: [N]orth, [S]outh, [E]ast, [W]west, or [Q]uit:")
+    print("####################################################")
+    print("\n")
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
+    if character_input == 'n' or 'N':
+        if character_location.n_to is not None:
+            character.location = character.location.n_to
+        else:
+            print(no_path)
+    elif character_input == 's' or 'S':
+        if character_location.n_to is not None:
+            character.location = character.location.s_to
+        else:
+            print(no_path)
+    elif character_input == 'e' or 'E':
+        if character_location.e_to is not None:
+            character.location = character.location.e_to
+        else:
+            print(no_path)
+    elif character_input == 'w' or 'W':
+        if character_location.w_to is not None:
+            character.location = character.location.w_to
+        else:
+            print(no_path)
+
+
 # If the user enters "q", quit the game.
+    elif character_input == 'q' or 'Q':
+        print('Thank you for playing. Come again soon! \n \n')
+        exit()
+
+
+# Print an error message if the movement isn't allowed.
+    else:
+        print('Please Make a Valid Selection')

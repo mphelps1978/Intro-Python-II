@@ -1,26 +1,43 @@
 from room import Room
 from player import Player
+from inventory import Inventory
 
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons. Just inside the entrance, you notice a torch giving off a faint light",
+                     [Inventory(
+                         "Torch", "It\s a torch. What do you think it does\?")],
+                     isLit=True
+                     ),
 
-    'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+    'foyer':    Room("Foyer",
+                     """Dim light filters in from the south. Dusty passages run north and east."""
+                     [Inventory(
+                         "Note", "The note is written in what appears to be ancient runes. You are able to decipher it: My friends, what is here is yours")],
+                     isLit=True
+                     ),
 
-    'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
-into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+    'overlook': Room("Grand Overlook",
+                     """A steep cliff appears before you, falling into the darkness. Ahead to the north, you can make out a doorway, but there is no way across the chasm.""",
+                     isLit=True
+                     ),
 
-    'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+    'narrow':   Room("Narrow Passage",
+                     """The narrow passage bends here from west to north. The smell of gold permeates the air."""
+                     [Inventory(
+                         "Key", "This is a silver key encrusted with diamonds")],
+                     isLit=False
+                     ),
 
-    'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
-chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+    'treasure': Room("Treasure Chamber",
+                     """You've found the long-lost treasure chamber! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.""",
+                     [Inventory(
+                         "Chest", "There is a large, open chest in the center of the room. Sadly, it is empty.")],
+                     isLit=False
+                     )
 }
 
 

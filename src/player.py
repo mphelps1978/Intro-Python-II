@@ -7,7 +7,7 @@ class Player:
         self.inventory = inventory
 
     def __str__(self):
-        return(f"{self.items}")
+        return(f"{self.inventory}")
 
     def __reduce__(self):
-        return(f"{self.items}")
+        return(f"{self.inventory}")

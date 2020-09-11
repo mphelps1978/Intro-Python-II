@@ -75,10 +75,47 @@ while True:
     print(f"{character.location.description}")
     print("\n")
     character_input = input(
-        "Chose a direction: [N]orth, [S]outh, [E]ast, [W]west, or [Q]uit:")
+        "Chose a direction: [N]orth, [S]outh, [E]ast, [W]west, [I]nventory or [Q]uit:  ")
     print("####################################################")
     print("\n")
-#
+
+# First, we need to check and see if the player has opened their backpack
+# If they have, then we can give them the option to drop or examine items.
+
+if character_input.lower() == 'i':
+    adjust_inventory = True
+    while adjust_inventory is True:
+        adjust_inventory_prompt = input(
+            "Would you like to check your bag?  [Y]es or [N]o:  ")
+        if adjust_inventory_prompt.lower() == 'y':
+            adjust_inventory = True
+            inventory_list = character.inventory.copy()
+
+            # Show the contents of their inventory
+            inventory_list = []
+            for item in character.inventory:
+                inventory_list.append(item.name)
+            print(
+                f"You open your backpack and find: \n {str(inventory_list)[1: -1]}")
+
+            # Time to drop some items
+            for item in character.inventory:
+                remove_prompt = input(f"Drop {item.name}? [Y]es, [N]o:  ")
+
+                # if they say yes, then we remove it from our inventory, and add it to the rooms inventory
+                if remove_prompt.lower() == "y":
+                    character.inventory.remove(item)
+                    character.location.inventory.append(item)
+                print(
+                    f"You drop {item.name} onto the floor. \n Your bag now contains:\n {character.items}")
+
+        elif adjust_inventory_prompt.lower() == "n":
+            adjust_inventory = False
+
+        else:
+            pass
+
+
 # If the user enters a cardinal direction, attempt to move to the room there.
     if character_input.lower() == "n":
         if character_location.n_to is not None:

@@ -14,7 +14,7 @@ room = {
                      ),
 
     'foyer':    Room("Foyer",
-                     """Dim light filters in from the south. Dusty passages run north and east."""
+                     "Dim light filters in from the south. Dusty passages run north and east.",
                      [Inventory(
                          "Note", "The note is written in what appears to be ancient runes. You are able to decipher it: My friends, what is here is yours")],
                      isLit=True
@@ -26,7 +26,7 @@ room = {
                      ),
 
     'narrow':   Room("Narrow Passage",
-                     """The narrow passage bends here from west to north. The smell of gold permeates the air."""
+                     """The narrow passage bends here from west to north. The smell of gold permeates the air.""",
                      [Inventory(
                          "Key", "This is a silver key encrusted with diamonds")],
                      isLit=False
@@ -151,3 +151,37 @@ if character_input.lower() == 'i':
 # Print an error message if the movement isn't allowed.
     else:
         print('Please Make a Valid Selection')
+
+
+# Room inventory
+# first we need to check if the current room has anything in it
+# if it does:
+# show the item
+# give the player the option to pick up the item
+# if the player picks up the item:
+# Remove the item from the room inventory
+# Append the item to the character inventory
+
+if len(character.location.inventory) != 0:
+    room_contents = character.location.inventory.copy()
+
+    for item in room_contents:
+        item_picked_up = False
+        print(f'you see the following items in the room: {item.name}')
+
+        while item_picked_up is False:
+            get_prompt = input(f"Pick up {item.name}? [Y]es or [N]o:  ")
+
+            if get_prompt.lower() == "y":
+                character.inventory.append(item)
+                character.location.items.remove(item)
+                item_picked_up = True
+
+            elif get_prompt.lower() == "n":
+                item_picked_up = True
+
+        else:
+            pass
+
+    else:
+        print("After a thorough search, you find nothing of use in this room")

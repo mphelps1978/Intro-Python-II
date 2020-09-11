@@ -8,7 +8,7 @@ class Room:
         self.description = description
         self.new_passage = False
         self.items = items
-        self.isLight = isLight
+        self.isLit = isLit
         self.naturalLight = naturalLight
         # Directional Properties
         self.n_to = None
@@ -25,14 +25,14 @@ class Room:
 
     # General room descriptor - If there's no light, handle the situation accordingly
     def __str__(self):
-        if self.isLight == True or self.naturalLight == True:
+        if self.isLit == True or self.naturalLight == True:
             return f"You have entered the {self.name}. {self.description}"
         else:
             return f"There is no light. You can't see a thing"
 
     # If the room is searched, reveal items - if they can see, that is
     def search_room(self):
-        if self.isLight == True or self.naturalLight == True or "torch" in self.items:
+        if self.isLit == True or self.naturalLight == True or "torch" in self.items:
             if len(self.items) > 0:
                 print("In the room:")
                 print(*self.items)

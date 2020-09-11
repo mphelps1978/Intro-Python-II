@@ -7,7 +7,7 @@ from item import LightSource
 
 item_list = {
 
-    "sword": Item('sword', 'A worn, but still sharp looking blade'),
+    "sword": Item("sword", "A worn, but still sharp looking blade"),
     "ring": Item("ring", "a golden band. at first glance, appears to be nothing special"),
     "hammer": Item("hammer", "A simple looking sledgehammer"),
     "gold": Treasure("gold", "a pile of gold", 50),

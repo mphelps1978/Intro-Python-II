@@ -54,7 +54,7 @@ class Room:
         self.items.append(current_item)
 
     # Let there be light!
-    def illumination(self):
+    def illuminate(self):
         self.isLit = True
 
     # As it is given, so shall it be taken

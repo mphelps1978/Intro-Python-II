@@ -10,7 +10,7 @@ item_list = {
     "sword": Item("sword", "A worn, but still sharp looking blade"),
     "ring": Item("ring", "a golden band. at first glance, appears to be nothing special"),
     "hammer": Item("hammer", "A simple looking sledgehammer"),
-    "gold": Treasure("gold", "a pile of gold", 50),
+    "gold": Treasure("gold", "a pile of gold", 50000),
     "gem": Treasure("gemstone", "a bright, shiny gemstone", 1000),
-    "torch": LightSource("Torch", "This looks like it could light your way")
+    "torch": LightSource("torch", "This looks like it could light your way")
 }

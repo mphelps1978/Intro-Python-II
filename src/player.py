@@ -30,18 +30,18 @@ class Player:
     # Defining a method to pick up items. If they have a value, then we add it to our gold count
     def get_item(self, item):
         if item.name in self.location.items:
+            self.inventory.append(item)
+            item.on_take()
+            self.location.remove_item(item.name)
+
             if hasattr(item, "value"):
                 self.money += item.value
-                self.items.append(item)
-                item.on_take()
-                self.location.remove_item(item.name)
-
-            else:
-                print("there is nothing here by that name")
+        else:
+            print("there is nothing here by that name")
 
     # We can pick up items, but we need to drop them now. If they have a value, we remove it from our gold count
     def drop_item(self, item):
-        if item.name in self.items:
+        if item.name in self.inventory:
             if hasattr(item, "value"):
                 self.money -= item.value
                 index = self.items.index(item)
